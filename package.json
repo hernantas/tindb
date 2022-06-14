@@ -11,7 +11,11 @@
     "url": "https://github.com/hernantas/tindb/issues"
   },
   "homepage": "https://github.com/hernantas/tindb#readme",
+  "scripts": {
+    "format": "prettier -w ."
+  },
   "devDependencies": {
+    "prettier": "^2.7.0",
     "typescript": "^4.7.3"
   }
 }
