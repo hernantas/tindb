@@ -10,5 +10,8 @@
   "bugs": {
     "url": "https://github.com/hernantas/tindb/issues"
   },
-  "homepage": "https://github.com/hernantas/tindb#readme"
+  "homepage": "https://github.com/hernantas/tindb#readme",
+  "devDependencies": {
+    "typescript": "^4.7.3"
+  }
 }
