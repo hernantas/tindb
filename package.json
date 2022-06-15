@@ -1,6 +1,7 @@
 {
   "name": "tindb",
   "description": "Simple local database",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/hernantas/tindb.git"
