@@ -11,6 +11,12 @@
     "url": "https://github.com/hernantas/tindb/issues"
   },
   "homepage": "https://github.com/hernantas/tindb#readme",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "README.md",
+    "dist/**/*"
+  ],
   "scripts": {
     "build": "tsc -b",
     "format": "prettier -w .",
