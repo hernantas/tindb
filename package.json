@@ -12,7 +12,8 @@
   },
   "homepage": "https://github.com/hernantas/tindb#readme",
   "scripts": {
-    "format": "prettier -w ."
+    "format": "prettier -w .",
+    "test": "mocha -r ts-node/register src/**/*.test.ts"
   },
   "devDependencies": {
     "@types/mocha": "^9.1.1",
