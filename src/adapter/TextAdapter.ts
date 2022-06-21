@@ -4,7 +4,7 @@ import { Adapter } from './Adapter.js'
 export class TextAdapter implements Adapter<string> {
   constructor(private readonly filepath: string) {}
 
-  async read(): Promise<string | undefined> {
+  async read(): Promise<string> {
     return await readFile(this.filepath, 'utf-8')
   }
 

@@ -1,4 +1,4 @@
 export interface Adapter<T = unknown> {
-  read(): Promise<T | undefined>
+  read(): Promise<T>
   write(data: T): Promise<void>
 }

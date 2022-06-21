@@ -8,7 +8,7 @@ export class JSONAdapter implements Adapter<unknown> {
     this.adapter = new TextAdapter(filepath)
   }
 
-  async read(): Promise<unknown | undefined> {
+  async read(): Promise<unknown> {
     const data = await this.adapter.read()
     return data !== undefined && data !== null ? JSON.parse(data) : undefined
   }
