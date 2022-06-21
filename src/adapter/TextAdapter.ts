@@ -1,8 +1,8 @@
 import { readFile, writeFile } from 'fs/promises'
-import { Adapter } from './Adapter.js'
-import { BufferedWriter } from './BufferedWriter.js'
-import { ReadFn } from './ReadFn.js'
-import { WriteFn } from './WriteFn.js'
+import { Adapter } from './Adapter'
+import { BufferedWriter } from './BufferedWriter'
+import { ReadFn } from './ReadFn'
+import { WriteFn } from './WriteFn'
 
 export class TextAdapter implements Adapter<string> {
   private readonly writer: BufferedWriter<string>

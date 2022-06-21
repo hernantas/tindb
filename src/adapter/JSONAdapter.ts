@@ -1,5 +1,5 @@
 import { Adapter } from './Adapter'
-import { TextAdapter } from './TextAdapter.js'
+import { TextAdapter } from './TextAdapter'
 
 export class JSONAdapter implements Adapter<unknown> {
   constructor(
