@@ -4,7 +4,7 @@ import { TextAdapter } from './TextAdapter'
 export class JSONAdapter implements Adapter<unknown> {
   constructor(
     filepath: string,
-    private readonly adapter: TextAdapter = new TextAdapter(filepath)
+    private readonly adapter: Adapter<string> = new TextAdapter(filepath)
   ) {}
 
   async read(): Promise<unknown> {
