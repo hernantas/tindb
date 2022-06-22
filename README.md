@@ -2,6 +2,10 @@
 
 Very simple localdatabase for Node, Browser, or Electron.
 
+```
+Still in alpha, do not use for production. Use at your own risks.
+```
+
 # Installation
 
 ```sh
