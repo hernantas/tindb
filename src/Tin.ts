@@ -1,13 +1,13 @@
 import { Adapter } from './adapter/Adapter'
 
-export class Tin {
-  constructor(private readonly adapter: Adapter<unknown>) {}
+export class Tin<T = unknown> {
+  constructor(private readonly adapter: Adapter<T>) {}
 
-  async read(): Promise<unknown | undefined> {
+  async read(): Promise<T> {
     return await this.adapter.read()
   }
 
-  async write(data: unknown): Promise<void> {
+  async write(data: T): Promise<void> {
     await this.adapter.write(data)
   }
 }
