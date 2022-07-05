@@ -2,13 +2,20 @@ import { Adapter } from './Adapter'
 import { TextAdapter } from './TextAdapter'
 
 export class JSONAdapter implements Adapter<unknown> {
-  constructor(
-    filepath: string,
-    private readonly adapter: Adapter<string> = new TextAdapter(filepath)
-  ) {}
+  private readonly adapter: Adapter<string>
+
+  constructor(filepath: string) {
+    this.adapter = new TextAdapter(filepath)
+  }
 
   async read(): Promise<unknown> {
-    return JSON.parse(await this.adapter.read())
+    const data = await this.adapter.read()
+
+    try {
+      return JSON.parse(data)
+    } catch (e) {
+      return undefined
+    }
   }
 
   async write(data: unknown): Promise<void> {

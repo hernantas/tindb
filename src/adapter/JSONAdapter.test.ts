@@ -1,28 +1,23 @@
 import { expect } from 'chai'
-import { spy } from 'sinon'
+import { file } from 'tempy'
 import { JSONAdapter } from './JSONAdapter'
 
 describe('JSONAdapter', () => {
-  const strData = '{ "foo": "bar" }'
-  const readFn = spy(() => strData)
-  const writeFn = spy()
-  const adapter = new JSONAdapter('', {
-    async read() {
-      return await readFn()
-    },
-
-    async write(data: string) {
-      await writeFn(data)
-    },
+  it('Read empty file', async () => {
+    const filepath = file()
+    const adapter = new JSONAdapter(filepath)
+    await expect(adapter.read()).to.be.fulfilled.and.to.eventually.equal(
+      undefined
+    )
   })
 
-  it('Read', () => {
-    expect(adapter.read()).to.eventually.deep.equal({ foo: 'bar' })
-    expect(readFn.callCount).to.equal(1)
-  })
-
-  it('Write', async () => {
-    expect(adapter.write(strData)).to.eventually.not.throw()
-    expect(writeFn.callCount).to.equal(1)
+  it('Write & read file', async () => {
+    const data = { hello: 'world' }
+    const filepath = file()
+    const adapter = new JSONAdapter(filepath)
+    await expect(adapter.write(data)).to.be.fulfilled
+    await expect(adapter.read()).to.be.fulfilled.and.to.eventually.deep.equal(
+      data
+    )
   })
 })
