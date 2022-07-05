@@ -1,22 +1,18 @@
 import { readFile, writeFile } from 'fs/promises'
 import { Adapter } from './Adapter'
 import { BufferedWriter } from './BufferedWriter'
-import { ReadFn } from './ReadFn'
-import { WriteFn } from './WriteFn'
 
 export class TextAdapter implements Adapter<string> {
   private readonly writer: BufferedWriter<string>
 
-  constructor(
-    filepath: string,
-    private readonly readFn: ReadFn<string> = () => readFile(filepath, 'utf-8'),
-    writeFn: WriteFn<string> = (data) => writeFile(filepath, data, 'utf-8')
-  ) {
-    this.writer = new BufferedWriter(writeFn)
+  constructor(private readonly filepath: string) {
+    this.writer = new BufferedWriter((data) =>
+      writeFile(filepath, data, 'utf-8')
+    )
   }
 
   async read(): Promise<string> {
-    return await this.readFn()
+    return await readFile(this.filepath, 'utf-8')
   }
 
   async write(data: string): Promise<void> {
