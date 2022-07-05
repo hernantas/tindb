@@ -1,4 +1,4 @@
-import { WriteFn } from './WriteFn'
+import { WriteFn } from '../alias/WriteFn'
 
 interface Executor<T> {
   resolve(value: T | PromiseLike<T>): void
