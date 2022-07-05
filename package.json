@@ -28,6 +28,7 @@
   ],
   "scripts": {
     "build": "tsc -b",
+    "clean": "rimraf dist *.tsbuildinfo",
     "format": "prettier -w .",
     "test": "mocha -r ts-node/register \"src/**/*.test.ts\""
   },
