@@ -99,7 +99,5 @@ describe('Tin', () => {
         await instance.write(data + '-')
       })
     )
-
-    console.log(await instance.read())
   })
 })
