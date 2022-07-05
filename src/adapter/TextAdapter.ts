@@ -12,7 +12,14 @@ export class TextAdapter implements Adapter<string> {
   }
 
   async read(): Promise<string> {
-    return await readFile(this.filepath, 'utf-8')
+    try {
+      return await readFile(this.filepath, 'utf-8')
+    } catch (e) {
+      if ((e as NodeJS.ErrnoException).code === 'ENOENT') {
+        return ''
+      }
+      throw e
+    }
   }
 
   async write(data: string): Promise<void> {
