@@ -1,19 +1,20 @@
 import { expect } from 'chai'
-import { spy } from 'sinon'
+import { rm } from 'fs/promises'
+import { file } from 'tempy'
 import { TextAdapter } from './TextAdapter'
 
 describe('TextAdapter', () => {
-  const readFn = spy(async () => '')
-  const writeFn = spy()
-  const adapter = new TextAdapter('', readFn, writeFn)
-
-  it('Read File', async () => {
-    expect(await adapter.read()).to.equal('')
-    expect(readFn.callCount).to.equal(1)
+  it('Read empty file', async () => {
+    const filepath = file()
+    const adapter = new TextAdapter(filepath)
+    await expect(adapter.read()).to.be.fulfilled.and.to.eventually.equal('')
   })
 
-  it('Write File', async () => {
-    await adapter.write('')
-    expect(writeFn.callCount).to.equal(1)
+  it('Write & Read file', async () => {
+    const filepath = file()
+    const adapter = new TextAdapter(filepath)
+    await expect(adapter.write('Test')).to.be.fulfilled
+    await expect(adapter.read()).to.be.fulfilled.and.to.eventually.equal('Test')
+    await rm(filepath)
   })
 })
