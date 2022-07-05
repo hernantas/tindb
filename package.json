@@ -29,6 +29,7 @@
   "scripts": {
     "build": "tsc -b",
     "clean": "rimraf dist *.tsbuildinfo",
+    "rebuild": "npm run clean && npm run build",
     "format": "prettier -w .",
     "test": "mocha -r ts-node/register \"src/**/*.test.ts\""
   },
